@@ -13,17 +13,17 @@
 @implementation NSString (RandomString)
 
 + (NSString*)randomStringWithLength:(NSUInteger)length{
-    NSMutableString *tempString = [NSMutableString new];
-
-    for (int i = 0; i <= length; i++){
-        char tempChar = (char)(arc4random_uniform(25) + 97);
-        [tempString appendString:[NSString stringWithUTF8String:&tempChar]];
-        if(i == 0) {
-            tempString = [[tempString uppercaseString] mutableCopy];
-        }
-        
+   
+    char* tempUTF8String = malloc(sizeof(char) * (length + 1));
+    
+    tempUTF8String[0] = (char)(arc4random_uniform(25) + 65); //first sign from A to Z
+    tempUTF8String[length + 1] = '\0';
+    
+    for (int i = 1; i < length; i++){
+        tempUTF8String[i] = (char)(arc4random_uniform(25) + 97);
     }
-    return [NSString stringWithString:tempString];
+
+    return [NSString stringWithUTF8String:tempUTF8String];
 }
 
 + (NSString*)randomString{
