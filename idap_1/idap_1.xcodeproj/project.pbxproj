@@ -9,10 +9,12 @@
 /* Begin PBXBuildFile section */
 		6237CA13203D991800E984A4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6237CA12203D991800E984A4 /* main.m */; };
 		6237CA16203D991800E984A4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6237CA15203D991800E984A4 /* AppDelegate.m */; };
-		6237CA19203D991800E984A4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6237CA18203D991800E984A4 /* ViewController.m */; };
 		6237CA1C203D991800E984A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6237CA1A203D991800E984A4 /* Main.storyboard */; };
 		6237CA1E203D991800E984A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6237CA1D203D991800E984A4 /* Assets.xcassets */; };
 		6237CA21203D991800E984A4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6237CA1F203D991800E984A4 /* LaunchScreen.storyboard */; };
+		6237CA31203DE12100E984A4 /* DataString.m in Sources */ = {isa = PBXBuildFile; fileRef = 6237CA30203DE12100E984A4 /* DataString.m */; };
+		6237CA36203E997D00E984A4 /* NSString+RandomString.m in Sources */ = {isa = PBXBuildFile; fileRef = 6237CA35203E997D00E984A4 /* NSString+RandomString.m */; };
+		6237CA39203E9FC300E984A4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6237CA38203E9FC300E984A4 /* ViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,12 +22,16 @@
 		6237CA12203D991800E984A4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6237CA14203D991800E984A4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		6237CA15203D991800E984A4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		6237CA17203D991800E984A4 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		6237CA18203D991800E984A4 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		6237CA1B203D991800E984A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		6237CA1D203D991800E984A4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6237CA20203D991800E984A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6237CA22203D991800E984A4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6237CA2F203DE12100E984A4 /* DataString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DataString.h; path = Source/Model/DataString.h; sourceTree = "<group>"; };
+		6237CA30203DE12100E984A4 /* DataString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DataString.m; path = Source/Model/DataString.m; sourceTree = "<group>"; };
+		6237CA34203E997D00E984A4 /* NSString+RandomString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+RandomString.h"; path = "Source/Categories/NSString+RandomString.h"; sourceTree = "<group>"; };
+		6237CA35203E997D00E984A4 /* NSString+RandomString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+RandomString.m"; path = "Source/Categories/NSString+RandomString.m"; sourceTree = "<group>"; };
+		6237CA37203E9FC300E984A4 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = Source/InitialScene/ViewController.h; sourceTree = "<group>"; };
+		6237CA38203E9FC300E984A4 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = Source/InitialScene/ViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,10 +64,7 @@
 		6237CA10203D991800E984A4 /* idap_1 */ = {
 			isa = PBXGroup;
 			children = (
-				6237CA14203D991800E984A4 /* AppDelegate.h */,
-				6237CA15203D991800E984A4 /* AppDelegate.m */,
-				6237CA17203D991800E984A4 /* ViewController.h */,
-				6237CA18203D991800E984A4 /* ViewController.m */,
+				6237CA33203E990A00E984A4 /* Sources */,
 				6237CA1A203D991800E984A4 /* Main.storyboard */,
 				6237CA1D203D991800E984A4 /* Assets.xcassets */,
 				6237CA1F203D991800E984A4 /* LaunchScreen.storyboard */,
@@ -74,9 +77,48 @@
 		6237CA11203D991800E984A4 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				6237CA14203D991800E984A4 /* AppDelegate.h */,
+				6237CA15203D991800E984A4 /* AppDelegate.m */,
 				6237CA12203D991800E984A4 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		6237CA2D203D9D4000E984A4 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				6237CA37203E9FC300E984A4 /* ViewController.h */,
+				6237CA38203E9FC300E984A4 /* ViewController.m */,
+			);
+			name = Controller;
+			sourceTree = "<group>";
+		};
+		6237CA2E203DE0B900E984A4 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6237CA2F203DE12100E984A4 /* DataString.h */,
+				6237CA30203DE12100E984A4 /* DataString.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		6237CA32203E98DD00E984A4 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				6237CA34203E997D00E984A4 /* NSString+RandomString.h */,
+				6237CA35203E997D00E984A4 /* NSString+RandomString.m */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		6237CA33203E990A00E984A4 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				6237CA2D203D9D4000E984A4 /* Controller */,
+				6237CA2E203DE0B900E984A4 /* Model */,
+				6237CA32203E98DD00E984A4 /* Categories */,
+			);
+			name = Sources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -151,9 +193,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6237CA19203D991800E984A4 /* ViewController.m in Sources */,
+				6237CA36203E997D00E984A4 /* NSString+RandomString.m in Sources */,
+				6237CA31203DE12100E984A4 /* DataString.m in Sources */,
 				6237CA16203D991800E984A4 /* AppDelegate.m in Sources */,
 				6237CA13203D991800E984A4 /* main.m in Sources */,
+				6237CA39203E9FC300E984A4 /* ViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
