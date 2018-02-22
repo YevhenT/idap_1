@@ -74,11 +74,12 @@ static NSString * kCell = @"Cell";
     
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:kCell];
     if(cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle
                                       reuseIdentifier:kCell];
     }
     NSDictionary *dataString = [self.dataStrings objectAtIndex:indexPath.row];
-    cell.textLabel.text = (NSString*)dataString[@"firstName"];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", dataString[@"firstName"], dataString[@"lastName"]];
+    cell.detailTextLabel.text = dataString[@"birthday"];
     
     return cell;
 }
