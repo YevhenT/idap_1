@@ -12,5 +12,7 @@
 
 @property (assign, nonatomic, readonly) NSUInteger count;
 
++ (DataString*) sharedData;
+
 - (id) objectAtIndex:(NSUInteger)index;
 @end

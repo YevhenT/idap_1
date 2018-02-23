@@ -15,7 +15,7 @@
 + (NSString*)randomStringWithLength:(NSUInteger)length{
    
     char* tempUTF8String = malloc(sizeof(char) * (length + 1));
-    
+//??? заменить на отдельные функции randomUpperCase, randomLowerCase
     tempUTF8String[0] = (char)(arc4random_uniform(25) + 65); //first sign from A to Z
     tempUTF8String[length + 1] = '\0';
     

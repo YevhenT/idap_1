@@ -15,6 +15,7 @@
 		6237CA31203DE12100E984A4 /* DataString.m in Sources */ = {isa = PBXBuildFile; fileRef = 6237CA30203DE12100E984A4 /* DataString.m */; };
 		6237CA36203E997D00E984A4 /* NSString+RandomString.m in Sources */ = {isa = PBXBuildFile; fileRef = 6237CA35203E997D00E984A4 /* NSString+RandomString.m */; };
 		6237CA39203E9FC300E984A4 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6237CA38203E9FC300E984A4 /* ViewController.m */; };
+		6237CA3C203EDB2400E984A4 /* anonymous_240.png in Resources */ = {isa = PBXBuildFile; fileRef = 6237CA3B203EDB2400E984A4 /* anonymous_240.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		6237CA35203E997D00E984A4 /* NSString+RandomString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+RandomString.m"; path = "Source/Categories/NSString+RandomString.m"; sourceTree = "<group>"; };
 		6237CA37203E9FC300E984A4 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ViewController.h; path = Source/InitialScene/ViewController.h; sourceTree = "<group>"; };
 		6237CA38203E9FC300E984A4 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ViewController.m; path = Source/InitialScene/ViewController.m; sourceTree = "<group>"; };
+		6237CA3B203EDB2400E984A4 /* anonymous_240.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = anonymous_240.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 		6237CA10203D991800E984A4 /* idap_1 */ = {
 			isa = PBXGroup;
 			children = (
+				6237CA3A203EDB0700E984A4 /* Resources */,
 				6237CA33203E990A00E984A4 /* Sources */,
 				6237CA1A203D991800E984A4 /* Main.storyboard */,
 				6237CA1D203D991800E984A4 /* Assets.xcassets */,
@@ -119,6 +122,14 @@
 				6237CA32203E98DD00E984A4 /* Categories */,
 			);
 			name = Sources;
+			sourceTree = "<group>";
+		};
+		6237CA3A203EDB0700E984A4 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				6237CA3B203EDB2400E984A4 /* anonymous_240.png */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -182,6 +193,7 @@
 			files = (
 				6237CA21203D991800E984A4 /* LaunchScreen.storyboard in Resources */,
 				6237CA1E203D991800E984A4 /* Assets.xcassets in Resources */,
+				6237CA3C203EDB2400E984A4 /* anonymous_240.png in Resources */,
 				6237CA1C203D991800E984A4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

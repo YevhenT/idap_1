@@ -5,6 +5,7 @@
 //  Created by Yevhen Triukhan on 21.02.18.
 //  Copyright © 2018 Yevhen Triukhan. All rights reserved.
 //
+#import <UIKit/UIImage.h>
 
 #import "NSString+RandomString.h"
 
@@ -13,6 +14,7 @@
 static NSString * kFirstName = @"firstName";
 static NSString * kLastName = @"lastName";
 static NSString * kBirthday = @"birthday";
+static NSString * kImage = @"imageData";
 
 
 @interface DataString ()
@@ -23,23 +25,42 @@ static NSString * kBirthday = @"birthday";
 
 #pragma mark -
 #pragma mark Initialization and Deallocation
+
++ (DataString*) sharedData{
+    static DataString *dataStrings = nil;
+    static dispatch_once_t onceToken;
+    
+    dispatch_once(&onceToken, ^{
+        if (dataStrings == nil) {
+            dataStrings = [[DataString alloc] init];
+        }
+    });
+    
+    return dataStrings;
+}
+
+
 - (instancetype) init{
     if(self = [super init]){
         if(_strings.count == 0){
             _strings = [ @[ @{ kFirstName : [NSString randomString],
                                kLastName : [NSString randomString],
-                               kBirthday : [self stringFromDate:[NSDate date]]
+                               kBirthday : [self stringFromDate:[NSDate date]],
+                               kImage : [NSData dataWithContentsOfFile:
+                                         [[NSBundle mainBundle] pathForResource:@"anonymous_240"
+                                                                         ofType:@"png"]]//[UIImage imageNamed:@"anonymous_240"]
                              },
                             @{ kFirstName : [NSString randomString],
                                kLastName : [NSString randomString],
-                               kBirthday : [self stringFromDate:[NSDate date]]
+                               kBirthday : [self stringFromDate:[NSDate date]],
+                               kImage : [NSData dataWithContentsOfFile:
+                                         [[NSBundle mainBundle] pathForResource:@"anonymous_240"
+                                                                         ofType:@"png"]]//[UIImage imageNamed:@"anonymous_240"]
                              }
                           ] mutableCopy];
         }
     }
-//    [self stringFromDate:[NSDate date]];
-//    NSDate *today = [NSDate date];
-//    NSString *todayString = [[self dateFormatter] stringFromDate:today];
+    
     return self;
 }
 
@@ -55,6 +76,9 @@ static NSString * kBirthday = @"birthday";
 
 #pragma mark -
 #pragma mark Public API
+- (void)saveAllStrings{
+    ;
+}
 
 #pragma mark -
 #pragma mark Private API
