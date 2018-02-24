@@ -11,14 +11,16 @@
 
 #import "DataString.h"
 
+static NSString* dataFilePath();
+
 static NSString * kFirstName = @"firstName";
 static NSString * kLastName = @"lastName";
 static NSString * kBirthday = @"birthday";
-static NSString * kImage = @"imageData";
+static NSString * kImage = @"imageName";
 
 
 @interface DataString ()
-@property (strong, nonatomic) NSMutableArray *strings;
+@property (strong, nonatomic) NSMutableArray<NSDictionary*> *strings;
 @end
 
 @implementation DataString
@@ -41,44 +43,82 @@ static NSString * kImage = @"imageData";
 
 
 - (instancetype) init{
+    return [self initWithCapacity:0];
+}
+
+- (instancetype) initWithCapacity:(NSUInteger)numItems {
     if(self = [super init]){
-        if(_strings.count == 0){
-            _strings = [ @[ @{ kFirstName : [NSString randomString],
-                               kLastName : [NSString randomString],
-                               kBirthday : [self stringFromDate:[NSDate date]],
-                               kImage : [NSData dataWithContentsOfFile:
-                                         [[NSBundle mainBundle] pathForResource:@"anonymous_240"
-                                                                         ofType:@"png"]]//[UIImage imageNamed:@"anonymous_240"]
-                             },
-                            @{ kFirstName : [NSString randomString],
-                               kLastName : [NSString randomString],
-                               kBirthday : [self stringFromDate:[NSDate date]],
-                               kImage : [NSData dataWithContentsOfFile:
-                                         [[NSBundle mainBundle] pathForResource:@"anonymous_240"
-                                                                         ofType:@"png"]]//[UIImage imageNamed:@"anonymous_240"]
-                             }
-                          ] mutableCopy];
+        if(numItems != 0){
+            _strings = [[NSMutableArray alloc] initWithCapacity:numItems];
+            for (int idx = 0; idx < numItems; idx++){
+                _strings[idx] =  [self randomStringsAndDate];
+            }
+        } else {
+            _strings = [NSMutableArray array];
         }
     }
-    
+
     return self;
 }
 
+- (instancetype)initWithContentsOfFile:(NSString *)path{
+    self = [self initWithCapacity:0];
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+
+    if ([fileManager fileExistsAtPath: path] == YES){
+        if (self){
+            _strings = [[[NSArray alloc] initWithContentsOfFile:path] mutableCopy];
+        }
+    }
+    return self;
+}
 #pragma mark -
 #pragma mark Accessors
 - (NSUInteger) count {
     return _strings.count;
 }
 
-- (id) objectAtIndex:(NSUInteger)index{
-    return _strings[index];
-}
 
 #pragma mark -
 #pragma mark Public API
-- (void)saveAllStrings{
-    ;
+
+- (NSDictionary*) objectAtIndex:(NSUInteger)index{
+    return [self.strings objectAtIndex:index];
 }
+
+- (void) addObject:(id)anObject{ //incoming object will be ignored and replaced with random data
+    [self.strings insertObject:[self randomStringsAndDate] atIndex:0];
+}
+
+- (void) removeObjectAtIndex:(NSUInteger)index{
+    [self.strings removeObjectAtIndex:index];
+}
+
+- (void)exchangeObjectAtIndex:(NSUInteger)idx1 withObjectAtIndex:(NSUInteger)idx2{
+    NSDictionary *tempDictionary = self.strings[idx1];
+    [self.strings replaceObjectAtIndex:idx1 withObject:self.strings[idx2]];
+    [self.strings replaceObjectAtIndex:idx2 withObject:tempDictionary];
+}
+
+- (void) saveData{
+    [self.strings writeToFile:dataFilePath() atomically:YES];
+}
+- (DataString*) loadData{
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    if ([fileManager fileExistsAtPath: dataFilePath()] == YES){
+        self.strings = [[NSMutableArray alloc] initWithContentsOfFile:dataFilePath()];
+    } else {
+        self.strings = [NSMutableArray arrayWithObject:[self randomStringsAndDate]];
+    }
+    return self;
+}
+
+
+
+
+
+
+
 
 #pragma mark -
 #pragma mark Private API
@@ -86,9 +126,24 @@ static NSString * kImage = @"imageData";
 -(NSString *)stringFromDate:(NSDate *)date{
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     dateFormatter.locale = [NSLocale currentLocale];
-    [dateFormatter setDateFormat:@"d MMM yyyy, HH:mm:ss"];
+    [dateFormatter setDateFormat:@"d MMM yyyy, HH:mm:ss:SSS"];
     NSString *stringFromDate = [dateFormatter stringFromDate:date];
     return stringFromDate;
 }
 
+- (NSDictionary*) randomStringsAndDate{
+    return @{ kFirstName : [NSString randomString],
+              kLastName : [NSString randomString],
+              kBirthday : [self stringFromDate:[NSDate date]],
+              kImage : @"anonymous_240"
+              };
+}
+
 @end
+
+static NSString* dataFilePath(){
+    NSString *docFolderPath = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES)[0];
+    NSString *fileName = @"/data.txt";
+    NSString *filePath = [docFolderPath stringByAppendingString:fileName];
+    return filePath;
+}

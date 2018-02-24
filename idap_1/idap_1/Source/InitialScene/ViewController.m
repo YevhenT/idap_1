@@ -71,6 +71,12 @@ static NSString * kCell = @"Cell";
     
 }
 - (IBAction)didPressedAddButton:(UIBarButtonItem*)sender{
+    [self.tableView beginUpdates];
+    [self.dataStrings addObject:nil];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
+    [self.tableView insertRowsAtIndexPaths:@[indexPath]
+                          withRowAnimation:UITableViewRowAnimationRight];
+    [self.tableView endUpdates];
     
 }
 
@@ -115,8 +121,8 @@ static NSString * kCell = @"Cell";
     NSDictionary *dataString = [self.dataStrings objectAtIndex:indexPath.row];
     cell.textLabel.text = [NSString stringWithFormat:@"%@ %@", dataString[@"firstName"], dataString[@"lastName"]];
     cell.detailTextLabel.text = dataString[@"birthday"];
-    cell.imageView.image = [UIImage imageWithData:(NSData*)dataString[@"imageData"]]; //dataString[@"image"];
-    
+    cell.imageView.image = [UIImage imageNamed: dataString[@"imageName"]];
+                            
     return cell;
 }
 
@@ -126,21 +132,27 @@ static NSString * kCell = @"Cell";
 }
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath{
+    [self.dataStrings exchangeObjectAtIndex:sourceIndexPath.row
+                          withObjectAtIndex:destinationIndexPath.row];
     
+}
+
+
+//deleting
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
+    return YES;
 }
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(nonnull NSIndexPath *)indexPath{
     if(editingStyle == UITableViewCellEditingStyleDelete){
+        [self.tableView beginUpdates];
         [tableView deleteRowsAtIndexPaths:@[indexPath]
                          withRowAnimation:UITableViewRowAnimationFade];
+        [self.dataStrings removeObjectAtIndex:indexPath.row];
+        [self.tableView endUpdates];
     }
     
 }
-//deleting
-//- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath{
-//    return YES;
-//}
-
 
 
 @end

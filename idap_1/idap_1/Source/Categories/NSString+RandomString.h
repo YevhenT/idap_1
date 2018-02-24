@@ -11,5 +11,5 @@
 @interface NSString (RandomString)
 
 + (NSString*)randomStringWithLength:(NSUInteger)length;
-+ (NSString*)randomString;
++ (NSString*)randomString; //randomStringWithLength : 7
 @end
